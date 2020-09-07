@@ -42,6 +42,8 @@ class Application:
         if event.type == pygame.KEYDOWN:
             if event.key == K_TAB:
                 self.level += 1
+                if self.level == len(self.levels):
+                    self.level = 0
                 self.box = self.levels[self.level]
 
     def update(self):
@@ -79,6 +81,8 @@ class Application:
             events = pygame.event.get()
             for event in events:
                 self.process_event(event)
+
+                events.remove(event)
             if self.text_input.update(events):
                 input = self.text_input.get_text()
                 self.text_input.clear_text()

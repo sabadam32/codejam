@@ -1,11 +1,10 @@
 from boxes.box import Box
-from pygame.rect import Rect
 
 
 class DoubleBox(Box):
 
     def __init__(self):
-        super().__init__('Double', 'Doubles input', Rect(75, 75, 100, 100), float)
+        super().__init__(float)
         self.load_image('doublebox.png')
 
     def execute(self, data):

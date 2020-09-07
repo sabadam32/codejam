@@ -1,11 +1,10 @@
 from boxes.box import Box
-from pygame.rect import Rect
 
 
 class AddAllDigits(Box):
 
     def __init__(self):
-        super().__init__('Add All Digits', 'Adds up all the numbers found in the input string', Rect(75, 75, 100, 100), str)
+        super().__init__(str)
         self.load_image('box.png')
 
     def execute(self, data):
