@@ -30,7 +30,7 @@ class Application:
         self.clock = pygame.time.Clock()
         self.background = pygame.image.load(path.join('resources', 'img', 'background.png')).convert()
         self.surface.blit(self.background, self.background.get_rect())
-        self.text_input = text.input.TextInput('', self.font, self.font_size)
+        self.text_input = text.input.TextInput(self.font, self.font_size)
         self.input_label = Label('Input: ', self.font, self.font_size, (10, 415))
         self.result_label = None
         self.levels = [boxes.DoubleBox(), boxes.AddAllDigits()]
@@ -82,11 +82,10 @@ class Application:
             for event in events:
                 self.process_event(event)
 
-                events.remove(event)
-            if self.text_input.update(events):
-                input = self.text_input.get_text()
-                self.text_input.clear_text()
-                self.test_box(input)
+                if self.text_input.update(events):
+                    input = self.text_input.get_text()
+                    self.text_input.clear_text()
+                    self.test_box(input)
 
             self.draw()
             self.update()
